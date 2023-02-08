@@ -20,16 +20,28 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CodWer/Documents/MYProject/VeterinarSite/Client/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+[C:/Users/CodWer/Documents/MYProject/VeterinarSite/Client/Pages/About.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWJvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CodWer/Documents/MYProject/VeterinarSite/Client/Pages/FetchData.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+[C:/Users/CodWer/Documents/MYProject/VeterinarSite/Client/Pages/Evenimete.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbmltZXRlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/CodWer/Documents/MYProject/VeterinarSite/Client/Pages/Index.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+[C:/Users/CodWer/Documents/MYProject/VeterinarSite/Client/Pages/HomePape.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZVBhcGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CodWer/Documents/MYProject/VeterinarSite/Client/Pages/Legislation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGVnaXNsYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CodWer/Documents/MYProject/VeterinarSite/Client/Pages/MedicalList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVkaWNhbExpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CodWer/Documents/MYProject/VeterinarSite/Client/Pages/Partners.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/CodWer/Documents/MYProject/VeterinarSite/Client/Shared/SurveyPrompt.razor]

@@ -50,11 +50,25 @@ main[b-n0yiv5y5iu] {
     }
 }
 
-@media (min-width: 641px) {
+.name-short[b-n0yiv5y5iu]{
+    display: block;
+}
+.name-long[b-n0yiv5y5iu]{
+    display: none;
+}
+
+@media (min-width: 900px) {
     .page[b-n0yiv5y5iu] {
         flex-direction: row;
     }
-
+    
+    .name-short[b-n0yiv5y5iu]{
+        display: none;
+    }
+    .name-long[b-n0yiv5y5iu]{
+        display: block;
+    }
+    
     .sidebar[b-n0yiv5y5iu] {
         width: 250px;
         height: 100vh;
@@ -79,3 +93,5 @@ main[b-n0yiv5y5iu] {
         padding-right: 1.5rem !important;
     }
 }
+
+

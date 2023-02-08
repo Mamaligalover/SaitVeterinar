@@ -10,3 +10,5 @@ C:\Users\CodWer\Documents\MYProject\VeterinarSite\Shared\obj\Debug\net7.0\Veteri
 C:\Users\CodWer\Documents\MYProject\VeterinarSite\Shared\obj\Debug\net7.0\refint\VeterinarSite.Shared.dll
 C:\Users\CodWer\Documents\MYProject\VeterinarSite\Shared\obj\Debug\net7.0\VeterinarSite.Shared.pdb
 C:\Users\CodWer\Documents\MYProject\VeterinarSite\Shared\obj\Debug\net7.0\ref\VeterinarSite.Shared.dll
+C:\Users\CodWer\Documents\MYProject\VeterinarSite\Shared\bin\Debug\net7.0\VeterinarSite.Shared.runtimeconfig.json
+C:\Users\CodWer\Documents\MYProject\VeterinarSite\Shared\obj\Debug\net7.0\VeterinarSite.Shared.genruntimeconfig.cache

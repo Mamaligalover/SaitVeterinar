@@ -200,9 +200,21 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Radzen.Blazor": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[4.6.6, )"
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             }
           },
           "imports": [

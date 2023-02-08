@@ -69,6 +69,10 @@
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
+      "Id": "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Client\\wwwroot\\image.png",
+      "PackagePath": "staticwebassets\\image.png"
+    },
+    {
       "Id": "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Client\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
