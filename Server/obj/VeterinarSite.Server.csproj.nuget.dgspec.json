@@ -1,0 +1,229 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Server\\VeterinarSite.Server.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Client\\VeterinarSite.Client.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Client\\VeterinarSite.Client.csproj",
+        "projectName": "VeterinarSite.Client",
+        "projectPath": "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Client\\VeterinarSite.Client.csproj",
+        "packagesPath": "C:\\Users\\CodWer\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Client\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\CodWer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Shared\\VeterinarSite.Shared.csproj": {
+                "projectPath": "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Shared\\VeterinarSite.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Components.WebAssembly": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Radzen.Blazor": {
+              "target": "Package",
+              "version": "[4.6.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
+              "version": "[7.0.1, 7.0.1]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "browser-wasm": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Server\\VeterinarSite.Server.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Server\\VeterinarSite.Server.csproj",
+        "projectName": "VeterinarSite.Server",
+        "projectPath": "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Server\\VeterinarSite.Server.csproj",
+        "packagesPath": "C:\\Users\\CodWer\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Server\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\CodWer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Client\\VeterinarSite.Client.csproj": {
+                "projectPath": "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Client\\VeterinarSite.Client.csproj"
+              },
+              "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Shared\\VeterinarSite.Shared.csproj": {
+                "projectPath": "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Shared\\VeterinarSite.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Components.WebAssembly.Server": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Radzen.Blazor": {
+              "target": "Package",
+              "version": "[4.6.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Shared\\VeterinarSite.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Shared\\VeterinarSite.Shared.csproj",
+        "projectName": "VeterinarSite.Shared",
+        "projectPath": "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Shared\\VeterinarSite.Shared.csproj",
+        "packagesPath": "C:\\Users\\CodWer\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\CodWer\\Documents\\MYProject\\VeterinarSite\\Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\CodWer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Radzen.Blazor": {
+              "target": "Package",
+              "version": "[4.6.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
