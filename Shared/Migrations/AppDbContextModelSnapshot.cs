@@ -22,6 +22,183 @@ namespace VeterinarSite.Shared.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.BirouExecutivCMV", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("FileNameId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Function")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FileNameId");
+
+                    b.ToTable("BirouExecutivCMVs");
+                });
+
+            modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.ComponentaComisieiDentologiceSiLitigii", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("FileNameId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Function")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FileNameId");
+
+                    b.ToTable("ComponentaComisieiDentologiceSiLitigii");
+                });
+
+            modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.ComponentaComisieiPentruStiintaCercetareFormare", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("FileNameId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Function")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FileNameId");
+
+                    b.ToTable("ComponentaComisieiPentruStiintaCercetareFoRmare");
+                });
+
+            modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.FileContent", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte[]>("Content")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FileContente");
+                });
+
+            modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.FileName", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("FileContentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FileType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FileContentId");
+
+                    b.ToTable("FileNames");
+                });
+
+            modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.LucratorMedical", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CodCMV")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DateEnterCMv")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DiplomNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sanctions")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LucratorMedicals");
+                });
+
             modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.Student", b =>
                 {
                     b.Property<Guid>("Id")
@@ -39,6 +216,85 @@ namespace VeterinarSite.Shared.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("Password")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RefreshToken")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("TokenCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("TokenExpires")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.BirouExecutivCMV", b =>
+                {
+                    b.HasOne("VeterinarSite.Data.Persistance.Entities.FileName", "FileNam")
+                        .WithMany()
+                        .HasForeignKey("FileNameId");
+
+                    b.Navigation("FileNam");
+                });
+
+            modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.ComponentaComisieiDentologiceSiLitigii", b =>
+                {
+                    b.HasOne("VeterinarSite.Data.Persistance.Entities.FileName", "FileNam")
+                        .WithMany()
+                        .HasForeignKey("FileNameId");
+
+                    b.Navigation("FileNam");
+                });
+
+            modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.ComponentaComisieiPentruStiintaCercetareFormare", b =>
+                {
+                    b.HasOne("VeterinarSite.Data.Persistance.Entities.FileName", "FileNam")
+                        .WithMany()
+                        .HasForeignKey("FileNameId");
+
+                    b.Navigation("FileNam");
+                });
+
+            modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.FileName", b =>
+                {
+                    b.HasOne("VeterinarSite.Data.Persistance.Entities.FileContent", "FileContent")
+                        .WithMany()
+                        .HasForeignKey("FileContentId");
+
+                    b.Navigation("FileContent");
                 });
 #pragma warning restore 612, 618
         }

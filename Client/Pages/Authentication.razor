@@ -1,0 +1,31 @@
+﻿@page "/loginpage"
+@using VeterinarSite.Shared.Models.User
+@inject IUserAuthentication _authentication;
+
+<EditForm Model="UserLogInModel" OnSubmit="LogIn">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <InputText type="text" class="form-control" id="username" @bind-Value="UserLogInModel.Username"/>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <InputText class="form-control" type="password" @bind-Value="UserLogInModel.Password"/>
+            </div>
+    <button type="submit"> Login</button>
+</EditForm>
+
+@code {
+    private UserLogInModel UserLogInModel { get; set; } = new();
+    private UserRegistrationModel RegistrationModel { get; set; } = new();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+    private async void LogIn()
+    {
+        await _authentication.Login(UserLogInModel);
+    }
+
+}

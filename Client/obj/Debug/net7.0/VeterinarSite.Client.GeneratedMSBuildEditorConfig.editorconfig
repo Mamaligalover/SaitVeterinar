@@ -24,6 +24,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWJvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/CodWer/Documents/MYProject/VeterinarSite/Client/Pages/AdministratorPage/AddMEdicalWorkerField.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYXRvclBhZ2VcQWRkTUVkaWNhbFdvcmtlckZpZWxkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CodWer/Documents/MYProject/VeterinarSite/Client/Pages/Authentication.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CodWer/Documents/MYProject/VeterinarSite/Client/Pages/BiroulExecutiv.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmlyb3VsRXhlY3V0aXYucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/CodWer/Documents/MYProject/VeterinarSite/Client/Pages/ComisiaDeDentologieSiLitigii.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29taXNpYURlRGVudG9sb2dpZVNpTGl0aWdpaS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/CodWer/Documents/MYProject/VeterinarSite/Client/Pages/Evenimete.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbmltZXRlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

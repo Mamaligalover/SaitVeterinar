@@ -15,4 +15,14 @@ public class AppDbContext : DbContext
     }
     
     public DbSet<Student> Students { get; set; }
+    public DbSet<LucratorMedical> LucratorMedicals { get; set; }
+    public DbSet<FileName> FileNames { get; set; }
+    public DbSet<BirouExecutivCMV> BirouExecutivCMVs { get; set; }
+    public DbSet<ComponentaComisieiDentologiceSiLitigii> ComponentaComisieiDentologiceSiLitigii { get; set; }
+    public DbSet<FileContent> FileContente { get; set; }
+    public DbSet<ComponentaComisieiPentruStiintaCercetareFormare> ComponentaComisieiPentruStiintaCercetareFoRmare { get; set; }
+    public DbSet<User> Users { get; set; }
+    
+    
+    
 }

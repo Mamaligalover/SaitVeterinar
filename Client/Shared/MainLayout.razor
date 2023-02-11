@@ -3,12 +3,12 @@
 
 <div>
     <div style="background-color: #ffca2c;height: 10px;">
-        
+
     </div>
-    <RadzenMenu Responsive="true" Visible="true" Style="display: flex; justify-content: space-between; font-weight: 700; font-size: 1.2rem;">
+    <RadzenMenu Responsive="true" Visible="true" Style="display: flex; justify-content: space-between; font-weight: 700;">
         <div class="d-flex gap-3">
-            <div class="border border-3 border-white p-2 rounded-circle">
-                <img src="image.png" alt="logo" width="75px"/>
+            <div class="border border-3 border-white p-2 rounded-circle d-flex">
+                <img src="image.png" alt="logo" width="50px"/>
 
             </div>
             <div class="d-flex align-items-center text-white">
@@ -18,37 +18,42 @@
                 <p class="name-long">COLEGIUL MEDICILOR VETERINARI DIN REPUBLICA MOLDOVA</p>
             </div>
         </div>
-        <div class="d-flex">
+        <div class="d-flex flex-sm-column flex-md-row flex-lg-row">
             <RadzenMenuItem Text="Acasa" Path="home-pape" Icon="home"/>
-            <RadzenMenuItem Text="Despre CMV" Icon=" " Style="visibility: hidden">
-                <RadzenMenuItem Text="Prezentare Generala"></RadzenMenuItem>
-                <RadzenMenuItem Text="Biroul Executiv"></RadzenMenuItem>
-                <RadzenMenuItem Text="Comisia de dentologie si litigii"></RadzenMenuItem>
+            <RadzenMenuItem Text="Despre CMV" Icon=" ">
+                <RadzenMenuItem Text="Prezentare Generala" Path=""></RadzenMenuItem>
+                <RadzenMenuItem Text="Biroul Executiv" Path="executiv"></RadzenMenuItem>
+                <RadzenMenuItem Text="Comisia de dentologie si litigii" Path="comision"></RadzenMenuItem>
             </RadzenMenuItem>
             <RadzenMenuItem Text="Evenimente" Path="#" Icon=" "/>
             <RadzenMenuItem Text="Legislatie" Path="#" Icon=" ">
                 <RadzenMenuItem Text="Prezentare Generala"></RadzenMenuItem>
             </RadzenMenuItem>
-            <RadzenMenuItem Text="Lista medicilor veterinari" Path="#" Icon=" "/>
+            <RadzenMenuItem Text="Lista medicilor veterinari" Path="medical-list" Icon=" "/>
             <RadzenMenuItem Text="Formarea profesională continuă" Path="#" Icon=" "/>
             <RadzenMenuItem Text="Partenerii CMV" Path="#" Icon=" "/>
         </div>
-        <div class="m-3">
-            <RadzenMenuItem Text="Login" Icon="login"/>
-        </div>
+        @* <div class="m-3"> *@
+        @*     <RadzenMenuItem Text="Login" Icon="login"/> *@
+        @* </div> *@
 
 
     </RadzenMenu>
+    <RadzenDialog />
+    <RadzenNotification />
+    <RadzenTooltip />
 
 </div>
-<article class="content px-4">
-    @Body
-</article>
+<body class="content px-4 bg-light min-vh-100">
+   
+        @Body
+   
+</body>
 
 @code
 {
     ElementReference title;
-    
+
     void ShowTooltip(ElementReference elementReference, TooltipOptions options = null) =>
         tooltipService.Open(elementReference, "COLEGIUL MEDICILOR VETERINARI DIN REPUBLICA MOLDOVA", options);
 }

@@ -1,0 +1,75 @@
+﻿@using VeterinarSite.Shared.Models
+@inject DialogService dialogService
+@inject IMedicalWorker _medicalworkerservice;
+
+<EditForm EditContext="Context">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Nume</RadzenText>
+                    <RadzenTextBox @bind-Value="model.FirstName"/>
+                </div>
+                <div class="col-6">
+                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Prenume</RadzenText>
+                    <RadzenTextBox @bind-Value="model.lastName"/>
+                </div>
+                <div class="col-6">
+                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Cod CMV</RadzenText>
+                    <RadzenTextBox @bind-Value="model.CodCMV"/>
+                </div>
+                <div class="col-6">
+                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Numarul diplomei</RadzenText>
+                    <RadzenTextBox @bind-Value="model.DiplomNumber"/>
+                </div>
+                <div class="col-6">
+                    <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">DatePicker</RadzenText>
+                    <RadzenDatePicker @bind-Value="model.DateEnterCMv" DateFormat="d"/>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-footer">
+            <RadzenButton Click="() => Save()"> Save </RadzenButton>
+        </div>
+    </div>
+</EditForm>
+
+
+
+
+@code {
+    private VeterinarWorkerModel model { get; set; } 
+    private EditContext Context { get; set; }
+    
+    [Parameter]
+    public Guid? Id { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        model = new VeterinarWorkerModel();
+        if (Id.HasValue && Id !=Guid.Empty )
+        {
+            model = await _medicalworkerservice.GetById(Id.Value);
+        }
+        Context = new EditContext(model);
+    }
+
+    private async Task Save()
+    {
+        var valid = Context.Validate();
+        
+        if (valid)
+        {
+            var models = await _medicalworkerservice.AddorUpdate(model);
+            dialogService.Close();
+        }
+    }
+
+    private void Close()
+    {
+        
+    }
+
+}
