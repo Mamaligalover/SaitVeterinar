@@ -93,7 +93,7 @@ app.UseAuthentication();
 
 app.MapRazorPages();
 app.MapHub<UpdateDataHub>("/updateDataHub");
-
+app.MapHub<ComisionHub>("/biroulExecutivHub");
 app.MapControllers();
 app.MapFallbackToFile("index.html");
 

@@ -1,0 +1,114 @@
+﻿@using VeterinarSite.Shared.Models.BiroulExecutiv
+@using VeterinarSite.Shared.Services.ComisiaDeDenotologiesilitigii
+@inject IBiroulExecutivService _service
+@inject IComisionService _servicecomision;
+@inject ICenzors _serviceCenzor;
+@inject IScieneceAndResearchService _scienceService;
+@inject DialogService dialogService
+@if (!IsLoading)
+{
+    <EditForm EditContext="Context">
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Nume</RadzenText>
+                        <RadzenTextBox @bind-Value="model.FirstName"/>
+                    </div>
+                    <div class="col-6">
+                        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Prenume</RadzenText>
+                        <RadzenTextBox @bind-Value="model.lastName"/>
+                    </div>
+                    <div class="col-6">
+                        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">E-mail</RadzenText>
+                        <RadzenTextBox @bind-Value="model.Email"/>
+                    </div>
+                    <div class="col-6">
+                        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Numarul de telefon</RadzenText>
+                        <RadzenTextBox @bind-Value="model.Phone"/>
+                    </div>
+                    <div class="col-6">
+                        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Functia</RadzenText>
+                        <RadzenTextBox @bind-Value="model.Function"/>
+                    </div>
+                    <div class="col-6">
+                        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Descrierea</RadzenText>
+                        <RadzenTextBox @bind-Value="model.Description"/>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <RadzenButton Click="() => Save()"> Save </RadzenButton>
+            </div>
+        </div>
+    </EditForm>
+}
+
+@code {
+    private ComisionModel model { get; set; }
+    private EditContext Context { get; set; }
+    private bool IsLoading { get; set; }
+
+    [Parameter]
+    public Guid? Id { get; set; }
+
+    [Parameter]
+    public string InterfaceName { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsLoading = true;
+        model = new ComisionModel();
+        try
+        {
+            if (Id != null && Id != Guid.Empty)
+            {
+                if (InterfaceName == "IBiroulExecutivService")
+                {
+                    model = await _service.GetById(Id);
+                }
+                if (InterfaceName == "IComisionService")
+                {
+                    model = await _servicecomision.GetById(Id);
+                }
+                if (InterfaceName == "ICenzors")
+                {
+                    model = await _serviceCenzor.GetById(Id);
+                }
+                if (InterfaceName == "IScieneceAndResearchService")
+                {
+                    model = await _scienceService.GetById(Id);
+                }
+            }
+            Context = new EditContext(model);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private async Task Save()
+    {
+        var valid = Context.Validate();
+        if (valid)
+        {
+            if (InterfaceName == "IBiroulExecutivService")
+            {
+                await _service.AddorUpdate(model);
+            }
+            if (InterfaceName == "IComisionService")
+            {
+                await _servicecomision.AddorUpdate(model);
+            }
+        }
+    }
+
+}

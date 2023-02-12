@@ -5,10 +5,10 @@
 @inject DialogService dialogService
 @inject IMedicalWorker _medicalworkerservice;
 @inject NavigationManager navManager;
-@implements IAsyncDisposable
+
 <PageTitle>Lista Medicilor Veterinari</PageTitle>
 
-<div class="container-auto">
+<div class="container-auto min-vh-100">
     <AuthorizeView Roles="Admin">
         <div class="row justify-content-end">
             <button class="btn btn-success" @onclick="@(arg=>OpenDialog())" >Adauga inregistrare</button>
@@ -145,10 +145,5 @@
     }
     
 }
-@code {
-    public ValueTask DisposeAsync()
-    {
-        throw new NotImplementedException();
-    }
-}
+
 

@@ -1,18 +1,129 @@
 ﻿@page "/executiv"
+@using VeterinarSite.Shared.Models.BiroulExecutiv
+@using Microsoft.AspNetCore.SignalR.Client
+@using Mono.TextTemplating
+@inject DialogService dialogService
+@inject IBiroulExecutivService _service;
+@inject NavigationManager navManager;
 
-<div class="container-xl bg-white">
-   <div class="row flex-row">
-      <div class="col-sm-12 col-md-4 col-xl-3">
-         <RadzenCard Style="height: 266px; width: 296px"> 
-            <RadzenImage Style="width: 256px; height: 106px" Visible="true"></RadzenImage>
-            <RadzenCard Style="margin-top:0.2rem;">
-               some information
-            </RadzenCard>
-         </RadzenCard>
+<div class="container-xl bg-white min-vh-100">
+   <AuthorizeView Roles="Admin">
+      <div class="row justify-content-end">
+         <div class="col-4">
+            <RadzenButton Style="color: white;background-color: green; padding: 5px;" Click="()=>AddOrUpdate(Guid.Empty)" Icon="add">Adaugă înregistrare</RadzenButton>
+         </div>
       </div>
+   </AuthorizeView>
+
+   <div class="row flex-row">
+      @foreach (var item in model)
+      {
+         <div class="col-sm-12 col-md-4 col-xl-3">
+            <RadzenCard Style="height: 266px; width: 296px">
+               <RadzenImage Style="width: 256px; height: 106px" Path="@($"data:image/jpeg;base64,{Convert.ToBase64String(item.FileContetnt)}")"  Visible="true"></RadzenImage>
+               <div class="row bg-light">
+                  <p><b>@item.FirstName @item.lastName</b></p>
+                  <p><b>@item.Function</b></p>
+                  <p><b>@item.Email / @item.Phone</b></p>
+               </div>
+               <div class="row">
+                  <p>@item.Description</p>
+               </div>
+                  <AuthorizeView Roles="Admin">
+                     <div class="row justify-content-end">
+                        <div class="col-3">
+                           <RadzenButton Style="background-color: red;color: white" Click="() => DeleteRecord(item.Id)" Icon="clear"/>
+                        </div>
+                        <div class="col-3">
+                           <RadzenButton Style="background-color: #0c63e4;color: white;" Click="@(() => AddOrUpdate(item.Id.Value))" Icon="edit"/>
+                        </div>
+                        <div class="col-3">
+                         <RadzenUpload Multiple="false"  Url="@($"api/BiroulExecutive/upload/{item.Id}")" />
+                        </div>
+                     </div>
+                  </AuthorizeView>
+               </RadzenCard>
+           
+         </div>
+      }
+
    </div>
 </div>
-
 @code {
-    
+    private IEnumerable<ComisionModel> model { get; set;}
+   private HubConnection HubConnection { get; set; }
+
+   protected override async Task OnInitializedAsync()
+   {
+      model = new List<ComisionModel>();
+      await GetDataFronServerAsync();
+      await Getconnection();
+      StateHasChanged();
+   }
+
+   private async Task GetDataFronServerAsync()
+   {
+      model = await _service.GetAll();
+      StateHasChanged();
+   }
+
+   private async Task Upload(Guid Id)
+   {
+      
+   }
+
+   private async Task DeleteRecord(Guid? Id)
+   {
+      var result = await dialogService.OpenAsync("Sterge inregistrare", ds =>
+         @<div>
+            <p>Sigur doriti sa stergeti inregistrarea?</p>
+            <div class="row">
+               <div class="col-md-12">
+                  <RadzenButton Text="Da" Click="()=>ConfirmDelete(Id.Value)"/>
+                  <RadzenButton Text="Nu" Click="()=>ds.Close()"/>
+               </div>
+            </div>
+         </div>);
+   }
+   
+   private async Task ConfirmDelete(Guid Id)
+   {
+      ;
+      await _service.Delete(Id);
+     dialogService.Close();
+   }
+
+   private async Task AddOrUpdate(Guid Id)
+   {
+      var text = Id == Guid.Empty ? "Adaugarea inregistrarii noi" : "Editeaza inregistrarea";  
+         await dialogService.OpenAsync<BiroulExecutivAddOrUpdatePage>(text,
+            new Dictionary<string, object>() { { "Id", Id },{"InterfaceName","IBiroulExecutivService"} },
+            new DialogOptions()
+            {
+               Width = "800px",
+               Height = "530px",
+               Resizable = true,
+               Draggable = true
+            });
+ 
+   }
+
+   private async Task Getconnection()
+   {
+      HubConnection = new HubConnectionBuilder()
+         .WithUrl(navManager.ToAbsoluteUri("/biroulExecutivHub"))
+         .WithAutomaticReconnect()
+         .Build();
+      var test = HubConnection;
+      HubConnection.On("UpdateData", async () =>
+      {
+         await GetDataFronServerAsync();
+         dialogService.Close();
+         StateHasChanged();
+         Console.WriteLine("connection was invoked");
+       });
+      await HubConnection.StartAsync();
+   }
+
+   
 }

@@ -22,7 +22,9 @@ public class AppDbContext : DbContext
     public DbSet<FileContent> FileContente { get; set; }
     public DbSet<ComponentaComisieiPentruStiintaCercetareFormare> ComponentaComisieiPentruStiintaCercetareFoRmare { get; set; }
     public DbSet<User> Users { get; set; }
-    
-    
-    
+    public DbSet<Cenzor> Cenzors { get; set; }
+    public DbSet<SearchAndResourchePeople> SearchAndResourchePeoples { get; set; }
+
+
+
 }

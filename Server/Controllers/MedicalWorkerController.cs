@@ -62,6 +62,7 @@ public class MedicalWorkerController : ControllerBase,IMedicalWorker
         }
 
         await NotifyClientThatDataWasUpdated();
+       
         return _mapper.Map<IEnumerable<VeterinarWorkerModel>>(await _dbContext.LucratorMedicals.ToListAsync());
     }
 
