@@ -132,6 +132,6 @@ public class ScienceAndResearchServiceController : ControllerBase , IScieneceAnd
 
     private void SendNotification()
     {
-        _notificationHub.Clients.All.SendAsync("UpdateData");
+        _notificationHub.Clients.All.SendAsync("SearchUpdateData");
     }
 }

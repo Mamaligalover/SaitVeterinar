@@ -7,7 +7,6 @@ using VeterinarSite.Data.Persistance.Entities;
 using VeterinarSite.Server.Hub;
 using VeterinarSite.Shared.Models.BiroulExecutiv;
 using VeterinarSite.Shared.Services;
-using VeterinarSite.Shared.Services.ComisiaDeDenotologiesilitigii;
 
 namespace VeterinarSite.Server.Controllers;
 [Route("api/[controller]")]
@@ -130,6 +129,6 @@ public class CenzorsController :ControllerBase , ICenzors
 
     private void SendNotification()
     {
-        _notificationHub.Clients.All.SendAsync("UpdateData");
+        _notificationHub.Clients.All.SendAsync("CenzorUpdateData");
     }
 }

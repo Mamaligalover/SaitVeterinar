@@ -116,7 +116,7 @@
          .WithAutomaticReconnect()
          .Build();
       var test = HubConnection;
-      HubConnection.On("ComisonUpdateData", async () =>
+      HubConnection.On("CenzorUpdateData", async () =>
       {
          await GetDataFronServerAsync();
          dialogService.Close();

@@ -56,6 +56,40 @@ namespace VeterinarSite.Shared.Migrations
                     b.ToTable("BirouExecutivCMVs");
                 });
 
+            modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.Cenzor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("FileNameId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Function")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FileNameId");
+
+                    b.ToTable("Cenzors");
+                });
+
             modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.ComponentaComisieiDentologiceSiLitigii", b =>
                 {
                     b.Property<Guid>("Id")
@@ -199,6 +233,40 @@ namespace VeterinarSite.Shared.Migrations
                     b.ToTable("LucratorMedicals");
                 });
 
+            modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.SearchAndResourchePeople", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("FileNameId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Function")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("lastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FileNameId");
+
+                    b.ToTable("SearchAndResourchePeoples");
+                });
+
             modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.Student", b =>
                 {
                     b.Property<Guid>("Id")
@@ -270,6 +338,15 @@ namespace VeterinarSite.Shared.Migrations
                     b.Navigation("FileNam");
                 });
 
+            modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.Cenzor", b =>
+                {
+                    b.HasOne("VeterinarSite.Data.Persistance.Entities.FileName", "FileNam")
+                        .WithMany()
+                        .HasForeignKey("FileNameId");
+
+                    b.Navigation("FileNam");
+                });
+
             modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.ComponentaComisieiDentologiceSiLitigii", b =>
                 {
                     b.HasOne("VeterinarSite.Data.Persistance.Entities.FileName", "FileNam")
@@ -295,6 +372,15 @@ namespace VeterinarSite.Shared.Migrations
                         .HasForeignKey("FileContentId");
 
                     b.Navigation("FileContent");
+                });
+
+            modelBuilder.Entity("VeterinarSite.Data.Persistance.Entities.SearchAndResourchePeople", b =>
+                {
+                    b.HasOne("VeterinarSite.Data.Persistance.Entities.FileName", "FileNam")
+                        .WithMany()
+                        .HasForeignKey("FileNameId");
+
+                    b.Navigation("FileNam");
                 });
 #pragma warning restore 612, 618
         }
