@@ -50,3 +50,87 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+# .gitignore for Blazor WebAssembly and MSSQL projects
+
+# Visual Studio and Visual Studio Code files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln.ide
+*.pidb
+*.svclog
+*.scc
+*.dbmdl
+*.vspscc
+*.bak
+*.cache
+*.db
+*.ncrunchsolution
+*.ncrunchproject
+*.log
+*.csv
+*.err
+*.tss
+*.res
+*.dbproj.schemaview
+*.pfx
+*.publishsettings
+*.pg
+*.em
+*.docstates
+*.swp
+*.bak
+*.tmp
+*.swm
+*.swo
+*.db
+*.opendb
+*.db
+*.jfm
+*.ldb
+*.sqlite3
+*.sqlite
+*.sql
+.vs/
+.vscode/
+
+# Build and publish output
+bin/
+obj/
+Debug/
+Release/
+publish/
+
+# NuGet packages and cache
+*.nupkg
+*.nuspec
+*.lock.json
+packages/
+project.lock.json
+
+# Node.js and npm
+node_modules/
+
+# Local environment settings and secrets
+appsettings.*.json
+*.launchSettings.json
+local.settings.json
+
+# Miscellaneous files
+*.tmp
+*.swp
+*.log
+*.bak
+*.orig
+*.rej
+*~$*
+*.~
+*.patch
+
+# macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
