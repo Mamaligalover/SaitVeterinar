@@ -129,6 +129,11 @@ local.settings.json
 *.patch
 
 obj/
+ide/
+Shared/obj/
+Server/obj/
+VeterinarSite.Persistance/obj/
+idea/
 
 # macOS files
 .DS_Store
