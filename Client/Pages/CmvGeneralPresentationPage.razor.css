@@ -1,0 +1,12 @@
+﻿.general-presentation-content{
+    font-size: 1.5rem!important;
+}
+p{
+margin-bottom: 1rem;
+}
+p:last-child{
+    margin-bottom: 0;
+}
+.test{
+    background: red;
+}

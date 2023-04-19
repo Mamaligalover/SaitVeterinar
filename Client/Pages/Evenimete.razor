@@ -1,0 +1,87 @@
+@page "/calendar"
+@using VeterinarSite.Shared.Models.EventsModel
+@using VeterinarSite.Client.Pages.EventComponents
+@using System.Globalization
+@using VeterinarSite.Shared.Services.Events
+@inject IEventsService _events;
+
+<PageTitle>Evenimete</PageTitle>
+<div class="row">
+    <div class="col-12">
+        <RadzenText Text="Evenimete" TextStyle="TextStyle.H3" TagName="TagName.H1" />
+    </div>
+</div>
+<div class="container">
+    <RadzenScheduler @ref="Schedule"
+                     TItem="AppointmentModel"
+                     SlotRender="OnSlotRender"
+                     Data="appointments"
+                     StartProperty="Start"
+                     EndProperty="End"
+                     TextProperty="Text"
+                     AppointmentSelect="OnAppointmentSelect"
+                     SlotSelect="OnSlotSelect"
+                     TodayText="Astăzi"
+                     Culture="CultureInfo.InstalledUICulture"
+                     LoadData="GetDataFromServer">
+        <RadzenDayView Text="Zile"/>
+        <RadzenWeekView Text="Săptămână"/>
+        <RadzenMonthView Text="Luna"/>
+    </RadzenScheduler>
+</div>
+
+
+@code{
+
+    RadzenScheduler<AppointmentModel> Schedule;
+    IEnumerable<AppointmentModel> appointments = new List<AppointmentModel>();
+
+    protected override async void  OnAfterRender(bool firstRender)
+    {
+        await GetDataFromServer();
+    }
+
+    private void OnSlotRender(SchedulerSlotRenderEventArgs args)
+    {
+        if (args.View.Text == "Month" && args.Start.Date == DateTime.Today)
+        {
+            args.Attributes["style"] = "background: rgba(255,220,40,.2);";
+        }
+
+        if ((args.View.Text == "Week" || args.View.Text == "Day") && args.Start.Hour > 8 && args.Start.Hour < 19)
+        {
+            args.Attributes["style"] = "background: rgba(255,220,40,.2);";
+        }
+        
+        
+    }
+    
+    async Task OnSlotSelect(SchedulerSlotSelectEventArgs args)
+    {
+
+        Console.WriteLine($"SelectedDate {args.Start} {args.End}");
+         if (Schedule.SelectedView.Text != "Year")
+         {
+            AppointmentModel data = await DialogService.OpenAsync<AddAppointmentPage>("Add Appointment",
+                new Dictionary<string, object> { { "Start", args.Start }, { "End", args.End } });
+
+            if (data != null)
+            {
+                await _events.Add(data);
+                await Schedule.Reload();
+            }
+         }
+    }
+    
+    async Task OnAppointmentSelect(SchedulerAppointmentSelectEventArgs<AppointmentModel> args)
+    {
+
+        await DialogService.OpenAsync<EditAppointmentPage>("Edit Appointment", new Dictionary<string, object> { { "model", args.Data } });
+        await Schedule.Reload();
+    }
+
+    private async Task GetDataFromServer()
+    {
+        appointments =  await _events.GetAllApointments();
+    }
+}

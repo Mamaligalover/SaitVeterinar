@@ -1,0 +1,149 @@
+@page "/medical-list"
+@using VeterinarSite.Shared.Models
+@using VeterinarSite.Client.Pages.AdministratorPage
+@using Microsoft.AspNetCore.SignalR.Client
+@inject DialogService dialogService
+@inject IMedicalWorker _medicalworkerservice;
+@inject NavigationManager navManager;
+
+<PageTitle>Lista Medicilor Veterinari</PageTitle>
+
+<div class="container-auto min-vh-100">
+    <AuthorizeView Roles="Admin">
+        <div class="row justify-content-end">
+            <button class="btn btn-success" @onclick="@(arg=>OpenDialog())" >Adauga inregistrare</button>
+        </div>
+    </AuthorizeView>
+    
+    <RadzenDataGrid @ref="grid"
+                    AllowFiltering="true" AllowColumnResize="true" 
+                    FilterMode="FilterMode.SimpleWithMenu" PageSize="30" AllowPaging="true" AllowSorting="true" Data="@orders" TItem="VeterinarWorkerModel" ColumnWidth="300px" 
+                    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                    LogicalFilterOperator="LogicalFilterOperator.Or">
+        <Columns>
+            <RadzenDataGridColumn TItem="VeterinarWorkerModel" Property="FirstName" Title="Order Date" FormatString="{0:d}" />
+            <RadzenDataGridColumn TItem="VeterinarWorkerModel" Property="lastName" Title="Required Date" FormatString="{0:d}" />
+            <RadzenDataGridColumn TItem="VeterinarWorkerModel" Property="Email" Title="Shipped Date" FormatString="{0:d}" />
+            <RadzenDataGridColumn TItem="VeterinarWorkerModel" Property="Phone" Title="Ship Name" />
+            <RadzenDataGridColumn TItem="VeterinarWorkerModel" Property="DiplomNumber" Title="Ship Country" />
+            <AuthorizeView Roles="Admin">
+                <RadzenDataGridColumn TItem="VeterinarWorkerModel" Property="" Title="Actions">
+                    <Template Context="actions">
+                        <RadzenButton
+                            Click="()=>DeleteRecord(((VeterinarWorkerModel)actions).Id)" 
+                            Icon="clear" 
+                            Style="background-color: red;color: white;"/>
+                        <RadzenButton 
+                            Click="()=>EditRecord(((VeterinarWorkerModel)actions).Id)"
+                            Icon="edit" 
+                            tyle="color: white; background-color: darkgreen"/>
+                    </Template>
+
+                </RadzenDataGridColumn>
+            </AuthorizeView>
+        </Columns>
+    </RadzenDataGrid>
+    
+</div>
+
+
+@code
+{
+    RadzenDataGrid<VeterinarWorkerModel> grid;
+    IEnumerable<VeterinarWorkerModel> orders { get; set; } = new List<VeterinarWorkerModel>();
+
+    private HubConnection? hubConnection;
+
+    protected override async Task OnInitializedAsync()
+    {
+        orders = await _medicalworkerservice.GetAll();
+         await GetHubConnection();
+        if (hubConnection.State == HubConnectionState.Connected)
+        {
+            Console.WriteLine("Connection was stablished succesifully!!");
+        }
+    }
+
+    private async Task OpenDialog()
+    {
+        await dialogService.OpenAsync<AddMEdicalWorkerField>("Adauga un lucrator Mediacal Nou",
+            new Dictionary<string, object>(),
+            new DialogOptions()
+            {
+                Width = "800px",
+                Height = "530px",
+                Resizable = true,
+                Draggable = true
+            });
+        
+    }
+
+    private async Task DeleteRecord(Guid? Id)
+    {
+        var result = await dialogService.OpenAsync("Sterge inregistrare", ds =>
+            @<div>
+                <p>Sigur doriti sa stergeti inregistrarea?</p>
+                <div class="row">
+                    <div class="col-md-12">
+                        <RadzenButton Text="Da" Click="()=>ConfirmDelete(Id.Value)"/>
+                        <RadzenButton Text="Nu" Click="()=>ds.Close()"/>
+                    </div>
+                </div>
+            </div>);
+    }
+
+    private async Task EditRecord(Guid? Id)
+    {
+        await dialogService.OpenAsync<AddMEdicalWorkerField>("Editeaza un lucrator Mediacal",
+            new Dictionary<string, object>(){ { "Id", Id }},
+            new DialogOptions()
+            {
+                Width = "800px",
+                Height = "530px",
+                Resizable = true,
+                Draggable = true
+            });
+        
+
+    }
+
+    private async Task ConfirmDelete(Guid Id)
+    {
+        await BusyDialog();
+        orders = await _medicalworkerservice.Delete(Id);
+        await grid.Reload();
+        dialogService.Close();
+    }
+    
+    async Task BusyDialog()
+    {
+        await DialogService.OpenAsync("", ds =>
+            @<div>
+                <div class="row">
+                    <div class="col-md-12">
+                        Loading...
+                    </div>
+                </div>
+            </div>, new DialogOptions() { ShowTitle = false, Style = "min-height:auto;min-width:auto;width:auto" });
+    }
+
+    private async Task GetHubConnection()
+    {
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(navManager.ToAbsoluteUri("/updateDataHub"))
+            .WithAutomaticReconnect()
+            .Build();
+        var test = hubConnection;
+        hubConnection.On("NotifyMedicalWorkersHasChanged", async () =>
+        {
+            orders = await _medicalworkerservice.GetAll();
+            StateHasChanged();
+            Console.WriteLine("connection was invoked");
+            grid.Reload();
+        });
+        await hubConnection.StartAsync();
+    }
+    
+}
+
+
