@@ -132,8 +132,9 @@ obj/
 ide/
 Shared/obj/
 Server/obj/
+Client/obj/
 VeterinarSite.Persistance/obj/
-idea/
+.idea/
 
 # macOS files
 .DS_Store
