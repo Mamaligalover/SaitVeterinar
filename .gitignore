@@ -128,6 +128,8 @@ local.settings.json
 *.~
 *.patch
 
+obj/
+
 # macOS files
 .DS_Store
 .AppleDouble
