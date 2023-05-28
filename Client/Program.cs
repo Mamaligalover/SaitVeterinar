@@ -10,6 +10,7 @@ using VeterinarSite.Client.Services.BiroulExecutiv;
 using VeterinarSite.Client.Services.Comision;
 using VeterinarSite.Client.Services.ComisionService;
 using VeterinarSite.Client.Services.Events;
+using VeterinarSite.Client.Services.FormareaProfesionala;
 using VeterinarSite.Client.Services.ScienceAndResearch;
 using VeterinarSite.Shared.Services;
 using VeterinarSite.Shared.Services.ComisiaDeDenotologiesilitigii;
@@ -34,6 +35,7 @@ builder.Services.AddScoped<ICenzors,CenzorService>();
 builder.Services.AddScoped<IScieneceAndResearchService,ResearchService>();
 builder.Services.AddScoped<IComisionService,ComisionService>();
 builder.Services.AddScoped<IEventsService,EventsService>();
+builder.Services.AddScoped<IFileStream,FormareaProfesionalaService>();
 builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddAuthorizationCore();
 

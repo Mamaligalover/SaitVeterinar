@@ -122,11 +122,16 @@ public class BiroulExecutiveController : Controller, IBiroulExecutivService
         await _dbContext.SaveChangesAsync();
         SendNotification();
     }
-
-    public async Task<bool> UploadImage()
+[HttpGet("test")]
+    public Task<bool> UploadImage()
     {
         throw new NotImplementedException();
     }
+
+    // public async Task<bool> UploadImage()
+    // {
+    //     throw new NotImplementedException();
+    // }
 
     private void SendNotification()
     {

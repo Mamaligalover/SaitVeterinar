@@ -124,7 +124,7 @@ public class ScienceAndResearchServiceController : ControllerBase , IScieneceAnd
         await _dbContext.SaveChangesAsync();
         SendNotification();
     }
-
+    [HttpGet("test")]
     public async Task<bool> UploadImage()
     {
         throw new NotImplementedException();

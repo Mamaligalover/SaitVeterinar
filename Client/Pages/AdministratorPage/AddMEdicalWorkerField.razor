@@ -19,16 +19,32 @@
                         <RadzenTextBox @bind-Value="model.lastName"/>
                     </div>
                     <div class="col-6">
+                        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Telefon</RadzenText>
+                        <RadzenTextBox @bind-Value="model.Phone"/>
+                    </div>
+                    <div class="col-6">
+                        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Email</RadzenText>
+                        <RadzenTextBox @bind-Value="model.Email"/>
+                    </div>
+                    <div class="col-6">
                         <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Cod CMV</RadzenText>
                         <RadzenTextBox @bind-Value="model.CodCMV"/>
                     </div>
                     <div class="col-6">
-                        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Numarul diplomei</RadzenText>
+                        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Numărul diplomei</RadzenText>
                         <RadzenTextBox @bind-Value="model.DiplomNumber"/>
                     </div>
                     <div class="col-6">
-                        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">DatePicker</RadzenText>
-                        <RadzenDatePicker @bind-Value="model.DateEnterCMv" DateFormat="d"/>
+                        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Data înscrierii</RadzenText>
+                        <RadzenDatePicker @bind-Value="model.DateEnterCMv" DateFormat="d" />
+                    </div>
+                    <div class="col-6">
+                        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Este Aciv?</RadzenText>
+                        <RadzenCheckBox @bind-Value="model.IsActive"/>
+                    </div>
+                    <div class="col-6">
+                        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Sancțiuni</RadzenText>
+                        <RadzenTextBox @bind-Value="model.Sanctions"/>
                     </div>
 
                 </div>

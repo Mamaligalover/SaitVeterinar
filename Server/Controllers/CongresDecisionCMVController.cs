@@ -14,9 +14,5 @@ public class CongresDecisionCMVController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpPost("add")]
-    public async Task<FileModel> AddFile()
-    {
-        
-    }
+    
 }

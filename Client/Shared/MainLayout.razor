@@ -27,16 +27,16 @@
                 <RadzenMenuItem Text="Componența Comisiei pentru Știință, Cercetare și Formare Profesională Continuă" Path="sience-research"></RadzenMenuItem>
                 <RadzenMenuItem Text="Componența Comisiei de Cenzori" Path="cenzors"></RadzenMenuItem>
             </RadzenMenuItem>
-            <RadzenMenuItem Text="Evenimente" Path="calendar" Icon=" "/>
-            <RadzenMenuItem Text="Legislatie" Path="#" Icon=" ">
-                <RadzenMenuItem Text="Prezentare Generala"></RadzenMenuItem>
-                <RadzenMenuItem Text="Hotărârile CMVRM"></RadzenMenuItem>
+            @* <RadzenMenuItem Text="Evenimente" Path="calendar" Icon=" "/> *@
+            <RadzenMenuItem Text="Legislatie" Icon=" ">
+                <RadzenMenuItem Text="Prezentare Generala" Path="legislation"/>
+                <RadzenMenuItem Text="Hotărârile CMVRM" Path="HotaririleCMV"></RadzenMenuItem>
                 <RadzenMenuItem Text="Exercitarea profesiei de medic veterinar"></RadzenMenuItem>
                 <RadzenMenuItem Text="Activitatea sanitară veterinară"></RadzenMenuItem>
                 <RadzenMenuItem Text="Medicamente de uz veterinar"></RadzenMenuItem>
             </RadzenMenuItem>
             <RadzenMenuItem Text="Lista medicilor veterinari" Path="medical-list" Icon=" "/>
-            <RadzenMenuItem Text="Formarea profesională continuă" Path="#" Icon=" "/>
+            <RadzenMenuItem Text="Formarea profesională continuă" Path="formarea-profesionala-continue" Icon=" "/>
             <RadzenMenuItem Text="Partenerii CMV" Path="partners" Icon=" "/>
         </div>
         @* <div class="m-3"> *@
@@ -45,20 +45,51 @@
 
 
     </RadzenMenu>
-    <RadzenDialog />
-    <RadzenNotification />
-    <RadzenTooltip />
+    <RadzenDialog/>
+    <RadzenNotification/>
+    <RadzenTooltip/>
 
 </div>
 <body class="content px-4 bg-light min-vh-100">
-    <div class="d-flex flex-row gap-3">
-        @Body
-    </div>
+<div class="d-flex flex-row gap-3">
+    @Body
+</div>
 </body>
 
-<RadzenFooter>
-    
-</RadzenFooter>
+<footer style="background-color: #4340d2; padding: 15px; border-bottom: 10px solid #ffca2c; margin-top: 30px;">
+    <div class="d-flex flex-row justify-content-between text-white">
+        <div class="d-flex gap-3">
+            <div class="border border-3 border-white p-2 rounded-circle d-flex">
+                <img src="image.png" alt="logo" width="50px"/>
+
+            </div>
+            <div style="font-weight: 700; color: white">
+                COLEGIUL MEDICILOR VETERINARI DIN REPUBLICA MOLDOVA
+            </div>
+        </div>
+
+
+        <div>
+            <ul style="list-style: none;">
+                <li>
+                    <strong>Date de contact : </strong>
+                </li>
+                <li>Adresa juridică: <strong>mun. Chișinău, str. Mircești 44</strong> </li>
+                <li>Adresa fizică: <strong>mun. Chișinău, str. Mircești 52</strong> </li>
+            </ul>
+        </div>
+        <div>
+            <ul style="list-style: none;">
+                <li>
+                    <strong>Date de contact : </strong>
+                </li>
+                <li>e-mail: <strong>cmvmd01@gmail.com</strong> </li>
+                <li>tel.: <strong>+373 69477443</strong> </li>
+            </ul>
+        </div>
+
+    </div>
+</footer>
 
 @code
 {

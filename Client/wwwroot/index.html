@@ -6,17 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>VeterinarSite</title>
     <base href="/" />
+    
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link href="VeterinarSite.Client.styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="_content/Radzen.Blazor/css/material-base.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.9.2/dist/umd/popper.min.js"
-            integrity="sha384-K4C4v4evWzq3AZOwFovL0yGLvUm8WbqEN9Pp6BnvydZ/Zcu+/ZcTMDJ2f6TAXr6G"
-            crossorigin="anonymous"></script>
+    
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
+    <script>
+        window.downloadFileFromStream = async (fileName, contentStreamReference) => {
+            const arrayBuffer = await contentStreamReference.arrayBuffer();
+            const blob = new Blob([arrayBuffer]);
+            const url = URL.createObjectURL(blob);
+            const anchorElement = document.createElement('a');
+            anchorElement.href = url;
+            anchorElement.download = fileName ?? '';
+            anchorElement.click();
+            anchorElement.remove();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+    <script>
+        window.SetActiveClass = () => {
+            const items = document.querySelectorAll('.hot');
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    document.querySelector('.active')?.classList.remove('active');
+                    item.classList.add('active');
+                })
+            })
+        }
+    </script>
+
+    <script>
+        window.triggerFileDownload = (fileName, url) => {
+            const anchorElement = document.createElement('a');
+            anchorElement.href = url;
+            anchorElement.download = fileName ?? '';
+            anchorElement.click();
+            anchorElement.remove();
+        }
+    </script>
+    
     <script type="text/javascript">
         function startCarousel(carouselId) { // NOTE: this JavaScript function added
             var myCarousel = document.getElementById(carouselId);

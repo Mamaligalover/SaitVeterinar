@@ -108,6 +108,14 @@
             {
                 await _servicecomision.AddorUpdate(model);
             }
+            if (InterfaceName == "IScieneceAndResearchService")
+            {
+                await _scienceService.AddorUpdate(model);
+            }
+            if (InterfaceName == "ICenzors")
+            {
+                await _serviceCenzor.AddorUpdate(model);
+            }
         }
     }
 

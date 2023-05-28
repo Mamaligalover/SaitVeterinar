@@ -29,5 +29,44 @@
         <ProjectReference Include="..\Client\VeterinarSite.Client.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="PdfFiles\HOTĂRÂREA1.pdf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="PdfFiles\HOTĂRÂREA10.pdf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="PdfFiles\HOTĂRÂREA2.pdf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="PdfFiles\HOTĂRÂREA3.pdf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="PdfFiles\HOTĂRÂREA4.pdf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="PdfFiles\HOTĂRÂREA5.pdf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="PdfFiles\HOTĂRÂREA6.pdf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="PdfFiles\HOTĂRÂREA7.pdf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="PdfFiles\HOTĂRÂREA7CMVRMprivindFormareaprofesionalăcontinuă.pdf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="PdfFiles\HOTĂRÂREA8.pdf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="PdfFiles\HOTĂRÂREA9.pdf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="PdfFiles\hotarirea.pdf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 
 </Project>

@@ -1,0 +1,105 @@
+﻿@page "/HotaririleCMV"
+@using VeterinarSite.Shared.Models
+@inject IJSRuntime JS;
+@inject IFileStream FileStream
+
+<div class="d-flex gap-3 w-100">
+    <div class="w-25 h-100">
+        <ul class="list-group" @onclick="@(async () => await JS.InvokeVoidAsync("SetActiveClass"))">
+            <li class="list-group-item hot" style="cursor: pointer" @onclick="@(()=> GetFileUrl(@"PdfFiles\HOTĂRÂREA1.pdf"))">
+                <span class="link-info hyper-link pe-auto link">
+                    HOTĂRÂREA nr. 1 din 14 mai 2022 a Congresului Colegiului Medicilor Veterinari din Republica Moldova
+                </span>
+            </li>
+            <li class="list-group-item hot " style="cursor: pointer" @onclick="@(()=> GetFileUrl(@"PdfFiles\HOTĂRÂREA2.pdf"))">
+                <span class="link-info hyper-link pe-auto">
+                    HOTĂRÂREA nr. 2 din 14 mai 2022 a Congresului Colegiului Medicilor Veterinari din Republica Moldova
+                </span>
+            </li>
+            <li class="list-group-item hot" style="cursor: pointer" @onclick="@(()=> GetFileUrl(@"PdfFiles\HOTĂRÂREA3.pdf"))">
+                <span class="link-info hyper-link pe-auto">
+                    HOTĂRÂREA nr. 3 din 14 mai 2022 a Congresului Colegiului Medicilor Veterinari din Republica Moldova (1)
+                </span>
+            </li>
+            <li class="list-group-item hot" style="cursor: pointer" @onclick="@(()=> GetFileUrl(@"PdfFiles\HOTĂRÂREA4.pdf"))">
+                <span class="link-info hyper-link pe-auto">
+                    HOTĂRÂREA nr. 4 din 14 mai 2022 a Congresului Colegiului Medicilor Veterinari din Republica Moldova
+                </span>
+            </li>
+            <li class="list-group-item hot" style="cursor: pointer" @onclick="@(()=> GetFileUrl(@"PdfFiles\HOTĂRÂREA5.pdf"))">
+                <span class="link-info hyper-link pe-auto">
+                    HOTĂRÂREA nr. 5 din 14 mai 2022 a Congresului Colegiului Medicilor Veterinari din Republica Moldova
+                </span>
+            </li>
+            <li class="list-group-item hot" style="cursor: pointer" @onclick="@(()=> GetFileUrl(@"PdfFiles\HOTĂRÂREA6.pdf"))">
+                <span class="link-info hyper-link pe-auto">
+                    HOTĂRÂREA nr. 6 din 14 mai 2022 a Congresului Colegiului Medicilor Veterinari din Republica Moldova
+                </span>
+            </li>
+            <li class="list-group-item hot" style="cursor: pointer" @onclick="@(()=> GetFileUrl(@"PdfFiles\HOTĂRÂREA7.pdf"))">
+                <span class="link-info hyper-link pe-auto">
+                    HOTĂRÂREA nr. 7 din 14 mai 2022 a Congresului Colegiului Medicilor Veterinari din Republica Moldova
+                </span>
+            </li>
+            <li class="list-group-item hot" style="cursor: pointer" @onclick="@(()=> GetFileUrl(@"PdfFiles\HOTĂRÂREA8.pdf"))">
+                <span class="link-info hyper-link pe-auto">
+                    HOTĂRÂREA nr. 8 din 14 mai 2022 a Congresului Colegiului Medicilor Veterinari din Republica Moldova
+                </span>
+            </li>
+            <li class="list-group-item hot" style="cursor: pointer" @onclick="@(()=> GetFileUrl(@"PdfFiles\HOTĂRÂREA9.pdf"))">
+                <span class="link-info hyper-link pe-auto">
+                    HOTĂRÂREA nr. 9 din 14 mai 2022 a Congresului Colegiului Medicilor Veterinari din Republica Moldova
+                </span>
+            </li>
+            <li class="list-group-item hot" style="cursor: pointer" @onclick="@(()=> GetFileUrl(@"PdfFiles\HOTĂRÂREA10.pdf"))">
+                <span class="link-info hyper-link pe-auto">
+                    HOTĂRÂREA nr. 10 din 14 mai 2022 a Congresului Colegiului Medicilor Veterinari din Republica Moldova
+                </span>
+            </li>
+        </ul>
+    </div>
+    <div class="w-75 h-100">
+        @if (IsLoading)
+        {
+            <Loading/>
+        }
+        else
+        {
+            if (!string.IsNullOrEmpty(PdfFileURl))
+            {
+                <object data="@PdfFileURl"
+                        width="100%" height="100%" type="application/pdf">
+                    Acest browser nu suportă fișiere PDF. Puteți descărca PDF-ul <a href="@PdfFileURl">aici</a>.
+                </object>
+                
+            }
+            else
+            {
+                <div>
+                    <h3> Faceți click pe un fișier din dreapta pentru al vizualiza aici </h3>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+@code {
+    private bool IsLoading { get; set; }
+    private string? PdfFileURl { get; set; } = string.Empty;
+
+    private async Task GetFileUrl(string? fileUrl)
+    {
+        IsLoading = true;
+        PdfFileURl = string.Empty;
+        try
+        {
+            PdfFileURl = await FileStream.GetBase64String(new GetFileModel() { FilePath = fileUrl });
+        }
+        finally
+        {
+            IsLoading = false;
+            StateHasChanged();
+        }
+    }
+
+}

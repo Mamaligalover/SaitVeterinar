@@ -1,31 +1,38 @@
 ﻿@page "/formarea-profesionala-continue"
+@using VeterinarSite.Persistance.Entities
+@using VeterinarSite.Shared.Models
+@inject IJSRuntime JS
+@inject IFileStream FileStream
 
-<div class="card w-100 ">
-    <div class="card-body text-center p-2">
-        <h1>Formarea profesională continuă</h1>
-    </div>
-</div>
 
-<div class="card w-100 min-vh-100">
-    <div class="card-body">
-        
-        <p class="my-3">În atașamentele de mai jos puteți descărca in format <b>PDF</b></p>
-        
+<div class="card w-100  ">
+    <div class="card-body p-2 vh-100">
+        <div class="text-center">
+            <h1>Formarea profesională continuă</h1>
+        </div>
         <ul class="list-group">
-            <li class="list-group-item">
-                <div class="d-flex gap-3">
-                    <p>
-                        <b>HOTĂRÂREA nr. 7 din 14 mai 2022 privind formarea profesionala continuă</b>
-                    </p>
-                    <button type="button" class="btn btn-primary">Descarcă</button>
+            <li class="list-group-item mb-2 d-flex gap-5">
+                <div>
+                    <strong>HOTĂRÂREA nr. 7</strong> CMVRM privind Formarea profesională continuă (.pdf)
+                </div>
+                <div>
+                    <RadzenIcon Icon="cloud_download" @onclick="@(()=>DownloadDocumnet(name:"hotarirea.pdf",filepath:@"PdfFiles\hotarirea.pdf"))"></RadzenIcon>
                 </div>
             </li>
-            <li class="list-group-item">
-                <div class="d-flex gap-3">
-                    <p>
-                        <b>RAPORT DE AUTOEVALUARE PENTRU PREGĂTIREA PROFESIONALĂ CONTINUĂ</b>
-                    </p>
-                    <button type="button" class="btn btn-primary">Descarcă</button>
+            <li class="list-group-item mb-2 d-flex gap-5">
+                <div>
+                    RAPORT DE AUTOEVALUARE PENTRU PREGĂTIREA PROFESIONALĂ CONTINUĂ (.pdf)
+                </div>
+                <div>
+                     <RadzenIcon Icon="cloud_download" @onclick="@(()=>DownloadDocumnet(name:"raport-pdf.pdf",filepath:@"PdfFiles\raport-pdf.pdf"))"></RadzenIcon>
+                </div>
+            </li>
+            <li class="list-group-item mb-2 d-flex gap-5">
+                <div>
+                    RAPORT DE AUTOEVALUARE PENTRU PREGĂTIREA PROFESIONALĂ CONTINUĂ (.word)
+                </div>
+                <div>
+                     <RadzenIcon Icon="cloud_download" @onclick="@(()=>DownloadDocumnet(name:"raport-docs.docx",filepath:@"PdfFiles\raport-docs.docx"))"></RadzenIcon>
                 </div>
             </li>
         </ul>
@@ -35,4 +42,19 @@
 
 @code {
 
+        
+
+    private async Task DownloadDocumnet(string name,string filepath)
+    {
+        var model = new GetFileModel()
+        {
+            FilePath = filepath 
+        };
+        var fileStream = await FileStream.GetFileStream(model);
+        
+        using var streamRef = new DotNetStreamReference(stream: fileStream);
+
+        await JS.InvokeVoidAsync("downloadFileFromStream", name, streamRef);
+    }
+    
 }
